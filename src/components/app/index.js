@@ -15,7 +15,8 @@ class App extends Component {
 
         this.state = {
             isLoading: false,
-            source: ''
+            source: '',
+            result: 0
         };
     }
 
@@ -28,22 +29,24 @@ class App extends Component {
         const reader = new FileReader();
 
         reader.addEventListener('loadstart', () => {
-            this.setState({isLoading: true, source: ''});
+            this.setState({
+                isLoading: true,
+                source: '',
+                result: 0
+            });
         });
 
         reader.addEventListener('load', () => {
             const dataURL = reader.result;
 
             setTimeout(() => {
-                this.setState({isLoading: false, source: dataURL});
+                this.setState({
+                    isLoading: false,
+                    source: dataURL,
+                    result: 0
+                });
             }, 4000);
         });
-
-        // reader.onload = () => {
-        //
-        //     // const output = document.getElementById('output');
-        //     // output.src = dataURL;
-        // };
 
         reader.readAsDataURL(input.files[0]);
     }
@@ -55,6 +58,7 @@ class App extends Component {
                     handleChange={this.handleChange}
                     isLoading={this.state.isLoading}
                     source={this.state.source}
+                    result={this.state.result}
                 />
 
                 <img width="40" height="40" src={this.state.source} alt='some img' />
