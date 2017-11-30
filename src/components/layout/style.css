@@ -1,0 +1,10 @@
+.layout {
+    max-width: 320px;
+    min-width: 300px;
+    padding: 15px;
+}
+
+.layout__uploader {
+    margin-top: 65px;
+    margin-bottom: 60px;
+}
