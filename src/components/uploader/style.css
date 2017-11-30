@@ -1,3 +1,7 @@
+.uploader.uploader_state_loading .uploader__body {
+    animation: expand 2s ease-out infinite;
+}
+
 .uploader__body {
     position: relative;
     display: flex;
@@ -30,4 +34,13 @@
     display: block;
     max-width: 100%;
     max-height: 100%;
+}
+
+@keyframes expand {
+    0% {
+        box-shadow: 0 0 0 0 rgba(110, 133, 219, .8);
+    }
+    100% {
+        box-shadow: 0 0 0 40px rgba(110, 133, 219, 0);
+    }
 }

@@ -14,6 +14,7 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
 
         this.state = {
+            isLoading: false,
             source: ''
         };
     }
@@ -26,15 +27,23 @@ class App extends Component {
         const input = event.target;
         const reader = new FileReader();
 
-        reader.onload = () => {
+        reader.addEventListener('loadstart', () => {
+            this.setState({isLoading: true, source: ''});
+        });
+
+        reader.addEventListener('load', () => {
             const dataURL = reader.result;
 
-            console.log('dataURL:', dataURL);
+            setTimeout(() => {
+                this.setState({isLoading: false, source: dataURL});
+            }, 4000);
+        });
 
-            this.setState({source: dataURL});
-            // const output = document.getElementById('output');
-            // output.src = dataURL;
-        };
+        // reader.onload = () => {
+        //
+        //     // const output = document.getElementById('output');
+        //     // output.src = dataURL;
+        // };
 
         reader.readAsDataURL(input.files[0]);
     }
@@ -44,6 +53,8 @@ class App extends Component {
             <div className="app">
                 <Layout
                     handleChange={this.handleChange}
+                    isLoading={this.state.isLoading}
+                    source={this.state.source}
                 />
 
                 <img width="40" height="40" src={this.state.source} alt='some img' />

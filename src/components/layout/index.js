@@ -9,7 +9,7 @@ class Layout extends Component {
         return (
             <div className="layout">
                 <div className="layout__uploader">
-                    <Uploader handleChange={this.props.handleChange} />
+                    <Uploader handleChange={this.props.handleChange} isLoading={this.props.isLoading} source={this.props.source} />
                 </div>
 
                 <div className="layout__about">
