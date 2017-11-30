@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Camera extends Component {
     render() {
         return (
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="512px" height="418.133px" viewBox="0 46.934 512 418.133" enable-background="new 0 46.934 512 418.133">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="512px" height="418.133px" viewBox="0 46.934 512 418.133">
                 <path fill={this.props.fill} d="M471.049,132.267h-72.738l-34.133-85.333H147.823l-34.133,85.333H102.4V89.6H51.2v42.667H40.952
                     C18.364,132.267,0,150.63,0,173.218v250.607c0,22.741,18.5,41.241,41.242,41.241h429.517c22.741,0,41.241-18.5,41.241-41.241
                     V173.218C512,150.63,493.637,132.267,471.049,132.267z M68.267,106.667h17.067v25.6H68.267V106.667z M494.934,423.825
