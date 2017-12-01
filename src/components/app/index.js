@@ -14,12 +14,17 @@ class App extends Component {
         super();
 
         this.handleChange = this.handleChange.bind(this);
+        this.generatePalette = this.generatePalette.bind(this);
 
         this.state = {
             isLoading: false,
             source: '',
             result: 0
         };
+    }
+
+    componentDidMount() {
+        this.image.addEventListener('load', this.generatePalette);
     }
 
     /**
@@ -46,8 +51,6 @@ class App extends Component {
                     source: dataURL,
                     result: 0
                 });
-
-                this.generatePalette();
             }, 4000);
         });
 
@@ -58,7 +61,7 @@ class App extends Component {
      * Generate color palette
      */
     generatePalette() {
-        const image = this.appImg;
+        const image = this.image;
         console.log('image:', image);
 
         const palette = colorThief.getPalette(image);
@@ -77,7 +80,7 @@ class App extends Component {
                 />
 
                 <div className="app__image">
-                    <img src={this.state.source} alt='some img' ref={(appImg) => this.appImg = appImg} />
+                    <img src={this.state.source} alt='some img' ref={(image) => this.image = image} />
                 </div>
             </div>
         );
