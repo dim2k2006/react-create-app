@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import Layout from '../layout';
-
 import 'normalize.css';
 import './style.css';
+
+// eslint-disable-next-line
+const colorThief = new ColorThief();
 
 class App extends Component {
     /**
@@ -41,14 +43,27 @@ class App extends Component {
 
             setTimeout(() => {
                 this.setState({
-                    isLoading: false,
                     source: dataURL,
                     result: 0
                 });
+
+                this.generatePalette();
             }, 4000);
         });
 
         reader.readAsDataURL(input.files[0]);
+    }
+
+    /**
+     * Generate color palette
+     */
+    generatePalette() {
+        const image = this.appImg;
+        console.log('image:', image);
+
+        const palette = colorThief.getPalette(image);
+
+        console.log(palette);
     }
 
     render() {
@@ -61,7 +76,9 @@ class App extends Component {
                     result={this.state.result}
                 />
 
-                <img width="40" height="40" src={this.state.source} alt='some img' />
+                <div className="app__image">
+                    <img src={this.state.source} alt='some img' ref={(appImg) => this.appImg = appImg} />
+                </div>
             </div>
         );
     }
