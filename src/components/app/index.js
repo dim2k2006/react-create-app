@@ -66,7 +66,7 @@ class App extends Component {
         const image = this.image;
         const palette = colorThief.getPalette(image);
         let result = 0;
-        const ratioLimit = 25;
+        const ratioLimit = 35;
 
         for (const color of palette) {
             const red = color[0];
