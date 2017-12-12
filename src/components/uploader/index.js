@@ -3,6 +3,46 @@ import Upload from '../upload';
 import Loader from '../loader';
 import './style.css';
 
+const RenderResult = (props) => {
+    const result = props.result;
+    const text = props.text;
+    let markup;
+
+    switch(result) {
+        case 'fail':
+            markup = resultFail(text);
+            break;
+        case 'almost':
+            markup = resultAlmost(text);
+            break;
+        case 'success':
+            markup = resultSuccess(text);
+            break;
+        default:
+            markup = resultFail(text);
+    }
+
+    return markup;
+};
+
+const resultFail = (text) => {
+    return (
+        <div className="uploader__result uploader__result_fail" dangerouslySetInnerHTML={{__html: text}} />
+    );
+};
+
+const resultAlmost = (text) => {
+    return (
+        <div className="uploader__result uploader__result_almost" dangerouslySetInnerHTML={{__html: text}} />
+    );
+};
+
+const resultSuccess = (text) => {
+    return (
+        <div className="uploader__result uploader__result_success" dangerouslySetInnerHTML={{__html: text}} />
+    );
+};
+
 class Uploader extends Component {
     render() {
         let result = 'fail';
@@ -29,7 +69,7 @@ class Uploader extends Component {
                     </div>
                 </div>
 
-                <div className="uploader__result" dangerouslySetInnerHTML={{__html: text}}></div>
+                {this.props.source && !this.props.isLoading ? <RenderResult result={result} text={text} /> : <div className="uploader__spacer" />}
             </div>
         );
     }

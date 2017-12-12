@@ -2,21 +2,6 @@
     animation: expand 2s ease-out infinite;
 }
 
-.uploader.uploader_state_fail .uploader__result {
-    color: #E54D42;
-    opacity: 1;
-}
-
-.uploader.uploader_state_almost .uploader__result {
-    color: #E47D31;
-    opacity: 1;
-}
-
-.uploader.uploader_state_success .uploader__result {
-    color: #30AD62;
-    opacity: 1;
-}
-
 .uploader__body {
     position: relative;
     display: flex;
@@ -57,7 +42,23 @@
     font-size: 16px;
     line-height: 1.4;
     text-align: center;
-    opacity: 0;
+}
+
+.uploader__result.uploader__result_fail {
+    color: #E54D42;
+}
+
+.uploader__result.uploader__result_almost {
+    color: #E47D31;
+}
+
+.uploader__result.uploader__result_success {
+    color: #30AD62;
+}
+
+.uploader__spacer {
+    width: 100%;
+    height: 44px;
 }
 
 @keyframes expand {
