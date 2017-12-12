@@ -1,8 +1,25 @@
 import React, {Component} from 'react';
 import Uploader from '../uploader';
 import About from '../about';
+import Prize from '../prize';
 
 import './style.css';
+
+const LayoutAbout = () => {
+    return (
+        <div className="layout__about">
+            <About />
+        </div>
+    );
+};
+
+const LayoutPrize = () => {
+    return (
+        <div className="layout__prize">
+            <Prize />
+        </div>
+    );
+};
 
 class Layout extends Component {
     render() {
@@ -17,9 +34,9 @@ class Layout extends Component {
                     />
                 </div>
 
-                <div className="layout__about">
-                    <About />
-                </div>
+                {this.props.result <= 80 && <LayoutAbout />}
+
+                {this.props.result > 80 && <LayoutPrize />}
             </div>
         );
     }

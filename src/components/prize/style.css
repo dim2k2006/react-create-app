@@ -1,0 +1,22 @@
+.prize {
+    color: #6D83DE;
+    text-align: center;
+}
+
+.prize__title h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: currentColor;
+}
+
+.prize__preview {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+}
+
+.prize__preview img {
+    max-width: 100%;
+    max-height: 100%;
+}
